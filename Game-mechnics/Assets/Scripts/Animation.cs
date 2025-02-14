@@ -15,11 +15,14 @@ public class Animation : MonoBehaviour
     
     void Update()
     {
+
+        Debug.Log("!!");
         if (Input.GetKeyDown(KeyCode.W))
         {
 
-
+            Debug.Log("!!!!");
             
+          
             m_Animator.SetTrigger("Jump");
 
         }
