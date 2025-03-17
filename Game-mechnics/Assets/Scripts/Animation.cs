@@ -4,28 +4,47 @@ using UnityEngine;
 
 public class Animation : MonoBehaviour
 {
-    Animator m_Animator;
-   
+    public Animator m_Animator;
+    private string _stateName;
+
+
     void Start()
     {
-        
-        m_Animator = gameObject.GetComponent<Animator>();
+
+
+        //Pak het animator component en sla die op in de variabele
+        //   ani = GetComponent<Animator>();
+        _stateName = "idle";
+
     }
 
-    
+
     void Update()
     {
 
         Debug.Log("!!");
-        if (Input.GetKeyDown(KeyCode.W))
+
+        Debug.Log(Input.GetAxis("Vertical")); 
+
+        if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         {
-
-            Debug.Log("!!!!");
-            
-          
-            m_Animator.SetTrigger("Jump");
-
+            _stateName = "idle";
+            m_Animator.SetTrigger("Idle");
+            m_Animator.ResetTrigger("Walk");
+            Debug.Log("Stop Walking");
+        }else
+        {
+            m_Animator.SetTrigger("Walk");
+            m_Animator.ResetTrigger("Idle");
+            Debug.Log("Start Walking");
         }
 
+        if (Input.anyKeyDown)
+        {
+            Debug.Log("Stop Walking");
+        }
     }
+
+    
+    
 }

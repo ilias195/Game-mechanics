@@ -15,7 +15,7 @@ public class LaunchCube : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.W))
         {
             m_Rigidbody.AddForce(transform.up * m_Thrust);
         }
